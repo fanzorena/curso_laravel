@@ -24,6 +24,6 @@ class Pessoa
 
     public function convidar(Pessoa $object)
     {
-        echo sprintf('%s beijou %s!', $this->nome, $object->nome);
+        echo sprintf('%s convidou %s para sair!', $this->nome, $object->nome);
     }
 }
