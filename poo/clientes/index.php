@@ -37,7 +37,7 @@
                 <br/><br/>
                 <div class="list-group">
                     <?php foreach($clientes as $k => $cliente): ?>
-                    <a href="detalhes.php?id=<?php echo $k ?>" class="list-group-item"><?php echo $cliente->nome ?></a>
+                    <a href="detalhes.php?id=<?php echo $k ?>" class="list-group-item"><?php echo $cliente->getNome() ?> - <?php echo ($cliente instanceof PessoaFisica) ? 'Pessoa Física' : 'Pessoa Jurídica' ?></a>
                     <?php endforeach ?>
                 </div>
             </div>

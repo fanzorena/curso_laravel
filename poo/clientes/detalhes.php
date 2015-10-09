@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Clientes - <?php echo $cliente->nome ?></title>
+    <title>Clientes - <?php echo $cliente->getNome() ?></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
@@ -35,12 +35,25 @@
 
 <div class="container">
     <div class="well">
-        <h2><?php echo $cliente->nome;?></h2>
+        <h2><?php echo $cliente->getNome();?></h2>
         <ul>
-            <li><p><strong>Idade: </strong> <?php echo $cliente->idade ?></p></li>
-            <li><p><strong>CPF: </strong><?php echo $cliente->cpf ?></p></li>
-            <li><p><strong>Endereço: </strong><?php echo $cliente->endereco ?></p></li>
-            <li><p><strong>Telefone: </strong><?php echo $cliente->telefone ?></p></li>
+            <li><p><strong>Tipo: </strong> <?php echo ($cliente instanceof PessoaFisica) ? 'Pessoa Física' : 'Pessoa Jurídica' ?></p></li>
+            <?php if($cliente instanceof PessoaFisica): ?>
+            <li><p><strong>Idade: </strong> <?php echo $cliente->getIdade() ?></p></li>
+            <?php endif; ?>
+            <li><p><strong>CPF/CNPJ: </strong><?php echo $cliente->getDocumento() ?></p></li>
+            <li><p><strong>Endereço: </strong><?php echo $cliente->getEndereco() ?></p></li>
+            <?php if (!empty($cliente->getEnderecoCobranca())): ?>
+            <li><p><strong>Endereço de Cobrança: </strong> <?php echo $cliente->getEnderecoCobranca() ?></p></li>
+            <?php endif; ?>
+            <li><p><strong>Telefone: </strong><?php echo $cliente->getTelefone() ?></p></li>
+            <li>
+                <p><strong>Classificação:</strong>
+                <?php for($i = 1; $i <= 5; $i++): ?>
+                <span class="glyphicon <?php echo ($i <= $cliente->getImportancia()) ? 'glyphicon-star' : 'glyphicon-star-empty' ?>"></span>
+                <?php endfor; ?>
+                </p>
+            </li>
         </ul>
         <a href="index.php" class="btn btn-default">Voltar</a>
     </div>
