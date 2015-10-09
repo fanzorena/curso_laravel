@@ -50,7 +50,7 @@
             <li>
                 <p><strong>Classificação:</strong>
                 <?php for($i = 1; $i <= 5; $i++): ?>
-                <span class="glyphicon <?php echo ($i <= $cliente->getImportancia()) ? 'glyphicon-star' : 'glyphicon-star-empty' ?>"></span>
+                <span class="glyphicon <?php echo ($i <= $cliente->getGrauImportancia()) ? 'glyphicon-star' : 'glyphicon-star-empty' ?>"></span>
                 <?php endfor; ?>
                 </p>
             </li>

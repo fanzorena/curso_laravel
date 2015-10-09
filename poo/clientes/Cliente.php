@@ -8,18 +8,77 @@
  */
 class Cliente
 {
-    public $nome;
-    public $cpf;
-    public $endereco;
-    public $telefone;
-    public $idade;
+    private $nome;
+    private $endereco;
+    private $telefone;
+    private $idade;
 
-    public function __construct($nome, $cpf, $endereco, $telefone, $idade)
+    /**
+     * @return mixed
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param mixed $nome
+     */
+    public function setNome($nome)
     {
         $this->nome = $nome;
-        $this->cpf = $cpf;
-        $this->endereco = $endereco;
-        $this->telefone = $telefone;
-        $this->idade = $idade;
+        return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * @param mixed $endereco
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelefone()
+    {
+        return $this->telefone;
+    }
+
+    /**
+     * @param mixed $telefone
+     */
+    public function setTelefone($telefone)
+    {
+        $this->telefone = $telefone;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdade()
+    {
+        return $this->idade;
+    }
+
+    /**
+     * @param mixed $idade
+     */
+    public function setIdade($idade)
+    {
+        $this->idade = $idade;
+        return $this;
+    }
+
 }

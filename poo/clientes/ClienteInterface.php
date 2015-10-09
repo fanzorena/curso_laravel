@@ -9,6 +9,5 @@
 interface ClienteInterface
 {
     public function getDocumento();
-    public function getEnderecoCobranca();
-    public function getImportancia();
+    public function setDocumento($documento);
 }

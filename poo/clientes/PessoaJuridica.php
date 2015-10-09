@@ -1,5 +1,8 @@
 <?php
+require_once "Cliente.php";
 require_once "ClienteInterface.php";
+require_once "GrauImportanciaInterface.php";
+require_once "EnderecoCobrancaInterface.php";
 
 /**
  * Created by PhpStorm.
@@ -7,47 +10,21 @@ require_once "ClienteInterface.php";
  * Date: 09/10/2015
  * Time: 16:27
  */
-class PessoaJuridica implements ClienteInterface
+class PessoaJuridica extends Cliente implements ClienteInterface, GrauImportanciaInterface, EnderecoCobrancaInterface
 {
-    private $nome;
     private $cnpj;
-    private $endereco;
-    private $telefone;
     private $enderecoCobranca;
-    private $importancia;
+    private $grauImportancia;
 
     public function __construct($nome, $cnpj, $endereco, $telefone, $importancia, $enderecoCobranca = null)
     {
-        $this->nome = $nome;
-        $this->cnpj = $cnpj;
-        $this->endereco = $endereco;
-        $this->telefone = $telefone;
-        $this->importancia = $importancia;
-        $this->enderecoCobranca = $enderecoCobranca;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNome()
-    {
-        return $this->nome;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEndereco()
-    {
-        return $this->endereco;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTelefone()
-    {
-        return $this->telefone;
+        $this
+            ->setNome($nome)
+            ->setEndereco($endereco)
+            ->setTelefone($telefone)
+            ->setDocumento($cnpj)
+            ->setEnderecoCobranca($enderecoCobranca)
+            ->setGrauImportancia($importancia);
     }
 
     public function getDocumento()
@@ -55,13 +32,33 @@ class PessoaJuridica implements ClienteInterface
         return $this->cnpj;
     }
 
+    public function setDocumento($cnpj)
+    {
+        $this->cnpj = $cnpj;
+        return $this;
+    }
+
+    public function setEnderecoCobranca($enderecoCobranca)
+    {
+        $this->enderecoCobranca = $enderecoCobranca;
+        return $this;
+    }
+
     public function getEnderecoCobranca()
     {
         return $this->enderecoCobranca;
     }
 
-    public function getImportancia()
+    public function setGrauImportancia($importancia)
     {
-        return $this->importancia;
+        $this->grauImportancia = $importancia;
+        return $this;
     }
+
+    public function getGrauImportancia()
+    {
+        return $this->grauImportancia;
+    }
+
+
 }
