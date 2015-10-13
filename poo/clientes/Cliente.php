@@ -1,17 +1,17 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: anzorena
- * Date: 08/10/2015
- * Time: 16:25
- */
-class Cliente
+require_once('ClienteInterface.php');
+require_once('EnderecoCobrancaInterface.php');
+require_once('GrauImportanciaInterface.php');
+
+class Cliente implements ClienteInterface, EnderecoCobrancaInterface, GrauImportanciaInterface
 {
     private $nome;
     private $endereco;
     private $telefone;
     private $idade;
+    private $enderecoCobranca;
+    private $importancia;
 
     /**
      * @return mixed
@@ -81,4 +81,25 @@ class Cliente
         return $this;
     }
 
+    public function setEnderecoCobranca($enderecoCobranca)
+    {
+        $this->enderecoCobranca = $enderecoCobranca;
+        return $this;
+    }
+
+    public function getEnderecoCobranca()
+    {
+        return $this->enderecoCobranca;
+    }
+
+    public function setGrauImportancia($importancia)
+    {
+        $this->importancia = $importancia;
+        return $this;
+    }
+
+    public function getGrauImportancia()
+    {
+        return $this->importancia;
+    }
 }

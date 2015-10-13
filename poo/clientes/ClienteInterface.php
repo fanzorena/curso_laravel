@@ -8,6 +8,12 @@
  */
 interface ClienteInterface
 {
-    public function getDocumento();
-    public function setDocumento($documento);
+    public function getNome();
+    public function setNome($nome);
+    public function getTelefone();
+    public function setTelefone($telefone);
+    public function getEndereco();
+    public function setEndereco($endereco);
+    public function getIdade();
+    public function setIdade($idade);
 }
