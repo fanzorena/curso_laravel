@@ -1,6 +1,11 @@
 <?php
     require_once 'ListaClientes.php';
+    require_once 'PessoaFisica.php';
+    require_once 'PessoaJuridica.php';
+
     $cliente = $clientes[$_GET['id']];
+
+    $PF = $cliente instanceof PessoaFisica;
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,11 +42,11 @@
     <div class="well">
         <h2><?php echo $cliente->getNome();?></h2>
         <ul>
-            <li><p><strong>Tipo: </strong> <?php echo ($cliente instanceof PessoaFisica) ? 'Pessoa Física' : 'Pessoa Jurídica' ?></p></li>
-            <?php if($cliente instanceof PessoaFisica): ?>
+            <li><p><strong>Tipo: </strong> <?php echo ($PF) ? 'Pessoa Física' : 'Pessoa Jurídica' ?></p></li>
+            <?php if($PF): ?>
             <li><p><strong>Idade: </strong> <?php echo $cliente->getIdade() ?></p></li>
             <?php endif; ?>
-            <li><p><strong>CPF/CNPJ: </strong><?php echo $cliente->getDocumento() ?></p></li>
+            <li><p><strong>CPF/CNPJ: </strong><?php echo ($PF) ? $cliente->getCpf() : $cliente->getCnpj(); ?></p></li>
             <li><p><strong>Endereço: </strong><?php echo $cliente->getEndereco() ?></p></li>
             <?php if (!empty($cliente->getEnderecoCobranca())): ?>
             <li><p><strong>Endereço de Cobrança: </strong> <?php echo $cliente->getEnderecoCobranca() ?></p></li>

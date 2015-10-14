@@ -1,8 +1,6 @@
 <?php
 require_once "Cliente.php";
-require_once "ClienteInterface.php";
-require_once "GrauImportanciaInterface.php";
-require_once "EnderecoCobrancaInterface.php";
+require_once "PFInterface.php";
 
 /**
  * Created by PhpStorm.
@@ -10,11 +8,9 @@ require_once "EnderecoCobrancaInterface.php";
  * Date: 09/10/2015
  * Time: 16:27
  */
-class PessoaFisica extends Cliente implements ClienteInterface, GrauImportanciaInterface, EnderecoCobrancaInterface
+class PessoaFisica extends Cliente implements PFInterface
 {
     private $cpf;
-    private $enderecoCobranca;
-    private $grauImportanca;
 
     public function __construct($nome, $cpf, $endereco, $telefone, $idade, $importancia, $enderecoCobranca = null)
     {
@@ -23,41 +19,25 @@ class PessoaFisica extends Cliente implements ClienteInterface, GrauImportanciaI
             ->setEndereco($endereco)
             ->setIdade($idade)
             ->setTelefone($telefone)
-            ->setDocumento($cpf)
             ->setEnderecoCobranca($enderecoCobranca)
-            ->setGrauImportancia($importancia);
+            ->setGrauImportancia($importancia)
+            ->setCpf($cpf);
     }
 
-    public function getDocumento()
+    /**
+     * @return mixed
+     */
+    public function getCpf()
     {
         return $this->cpf;
     }
 
-    public function setDocumento($cpf)
+    /**
+     * @param mixed $cpf
+     */
+    public function setCpf($cpf)
     {
         $this->cpf = $cpf;
-        return $this;
-    }
-
-    public function getEnderecoCobranca()
-    {
-        return $this->enderecoCobranca;
-    }
-
-    public function setEnderecoCobranca($enderecoCobranca)
-    {
-        $this->enderecoCobranca = $enderecoCobranca;
-        return $this;
-    }
-
-    public function getGrauImportancia()
-    {
-        return $this->grauImportanca;
-    }
-
-    public function setGrauImportancia($importancia)
-    {
-        $this->grauImportanca = $importancia;
         return $this;
     }
 
